@@ -9,10 +9,7 @@ import { environment } from '../../environments/environment.desa';
 export class MovieService {
   constructor(private http: HttpClient) {}
 
-  getPopularMovies(
-    language: string = 'en-US',
-    page: number = 1,
-  ): Observable<any> {
+  getPopularMovies(language: string = 'es', page: number = 1): Observable<any> {
     const url = `${environment.apiUrl}/discover/tv?language=${language}&page=${page}&sort_by=popularity.desc`;
     return this.http.get(url, {
       headers: {
