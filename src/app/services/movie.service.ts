@@ -10,7 +10,7 @@ export class MovieService {
   constructor(private http: HttpClient) {}
 
   getPopularMovies(language: string = 'es', page: number = 1): Observable<any> {
-    const url = `${environment.apiUrl}/discover/tv?language=${language}&page=${page}&sort_by=popularity.desc`;
+    const url = `${environment.apiUrl}/discover/movie?language=${language}&page=${page}&sort_by=popularity.desc`;
     return this.http.get(url, {
       headers: {
         'Content-Type': 'application/json',
