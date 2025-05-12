@@ -1,26 +1,16 @@
 <div>
-  <h2>Movie List</h2>
-
   <h3>Tabla de Películas</h3>
-  <div>
-    <h3>Películas</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Nombre</th>
-          <th>Lanzamiento</th>
-          <th>Puntuación</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let movie of movies$ | async">
-          <td>{{ movie.id }}</td>
-          <td>{{ movie.name }}</td>
-          <td>{{ movie.first_air_date }}</td>
-          <td>{{ movie.vote_average }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="media-flex-container">
+    <!-- Nuevo control flow -->
+    @for (movie of movies; track movie.id) {
+      <app-media-card [item]="movie" type="movie"> </app-media-card>
+    }
+
+    <!-- Antiguo control flow -->
+    <app-media-card
+      *ngFor="let movie of movies$ | async"
+      [item]="movie"
+      [type]="'movie'"
+    ></app-media-card>
   </div>
 </div>

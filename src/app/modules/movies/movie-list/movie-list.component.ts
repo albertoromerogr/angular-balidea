@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Movie } from '@models/movie.model';
+import { Movie, MovieResponse } from '@models/movie.model';
 import { MovieService } from '@services/movie.service';
 import { map, Observable, of, take } from 'rxjs';
 
@@ -25,7 +25,7 @@ export class MovieListComponent implements OnInit {
     this.movieService
       .getPopularMovies()
       .pipe(
-        map((movies) => movies.results),
+        map((movies: MovieResponse) => movies.results),
         take(1),
       )
       .subscribe({

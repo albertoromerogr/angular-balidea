@@ -1,29 +1,22 @@
+export interface MovieResponse {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+}
 export interface Movie {
+  id: number;
   adult: boolean;
   backdrop_path: string;
-  first_air_date: string;
-  genre_ids: number[];
-  id: number;
-  name: string;
-  origin_country: string[];
   original_language: string;
-  original_name: string;
+  genre_ids: number[];
+  original_title: string;
   overview: string;
   popularity: number;
   poster_path: string;
+  release_date: string;
+  title: string;
+  video?: boolean; // Opcional
   vote_average: number;
   vote_count: number;
-}
-
-export interface MovieDetails extends Movie {
-  cast: string[];
-  trailer: string;
-  reviews: string[];
-}
-
-export interface MovieList {
-  movies: Movie[];
-  total: number;
-  page: number;
-  totalPages: number;
 }

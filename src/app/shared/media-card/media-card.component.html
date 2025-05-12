@@ -1,0 +1,9 @@
+<div class="media-card">
+  <a [routerLink]="routeUrl">
+    <img [src]="poster | async" alt="Image" class="media-image"
+  /></a>
+  <div class="media-content">
+    <h3 class="media-title">{{ title | truncate: 30 }}</h3>
+    <div class="media-vote">{{ vote | rating }}</div>
+  </div>
+</div>

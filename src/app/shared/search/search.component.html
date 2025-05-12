@@ -1,0 +1,8 @@
+<div>
+  <input
+    type="text"
+    [(ngModel)]="searchString"
+    (keyup.enter)="onSearch($event)"
+  />
+  <button [value]="searchString" (click)="onSearch($event)">Buscar</button>
+</div>

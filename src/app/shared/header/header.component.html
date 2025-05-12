@@ -1,5 +1,9 @@
-<header>
-  <div>
-    <h1>{{ title }}</h1>
+<header class="site-header">
+  <div class="header-container">
+    <h1 class="site-title">{{ title }}</h1>
+    <nav class="navigation">
+      <a [routerLink]="['/movies']">Peliculas</a>
+      <a [routerLink]="['/tvshows']">Series</a>
+    </nav>
   </div>
 </header>

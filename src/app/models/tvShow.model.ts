@@ -1,20 +1,23 @@
-export interface TVShow {
-  id: number;
-  name: string;
-  image: string;
-  rating: number;
+export interface TvShowResponse {
+  page: number;
+  results: TVShow[];
+  total_pages: number;
+  total_results: number;
 }
 
-export interface TVShowDetails extends TVShow {
-  cast: string[];
-  trailer: string;
-  reviews: string[];
-  seasons: number;
-  episodes: number;
-  description: string;
-  genre: string;
-  releaseDate: string;
-  status: string;
-  network: string;
-  runtime: number;
+export interface TVShow {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  origin_country: string[];
+  original_language: string;
+  original_name: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  first_air_date: string;
+  name: string;
+  vote_average: number;
+  vote_count: number;
 }

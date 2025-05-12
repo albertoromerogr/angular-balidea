@@ -1,0 +1,42 @@
+<div>
+  <div>
+    <img src="" />
+  </div>
+  <ul *ngIf="tvShow">
+    <li><strong>Adult:</strong> false</li>
+    <li><strong>Backdrop Path:</strong> /path/to/backdrop.jpg</li>
+    <li><strong>Genre IDs:</strong> [1, 2, 3]</li>
+    <li><strong>ID:</strong> 123</li>
+    <li><strong>Origin Country:</strong> ["US", "CA"]</li>
+    <li><strong>Original Language:</strong> en</li>
+    <li><strong>Original Name:</strong> Original Name Example</li>
+    <li><strong>Overview:</strong> This is a mock overview of the TV show.</li>
+    <li><strong>Popularity:</strong> 8.5</li>
+    <li><strong>Poster Path:</strong> /path/to/poster.jpg</li>
+    <li><strong>First Air Date:</strong> 2023-01-01</li>
+    <li><strong>Name:</strong> Mock TV Show</li>
+    <li><strong>Vote Average:</strong> 9.2</li>
+    <li><strong>Vote Count:</strong> 1500</li>
+  </ul>
+</div>
+
+@if (!tvShow) {
+  <ul>
+    <li><strong>Adult:</strong> false</li>
+    <li><strong>Backdrop Path:</strong> /path/to/backdrop.jpg</li>
+    <li><strong>Genre IDs:</strong> [1, 2, 3]</li>
+    <li><strong>ID:</strong> 123</li>
+    <li><strong>Origin Country:</strong> ["US", "CA"]</li>
+    <li><strong>Original Language:</strong> en</li>
+    <li><strong>Original Name:</strong> Original Name Example</li>
+    <li><strong>Overview:</strong> This is a mock overview of the TV show.</li>
+    <li><strong>Popularity:</strong> 8.5</li>
+    <li><strong>Poster Path:</strong> /path/to/poster.jpg</li>
+    <li><strong>First Air Date:</strong> 2023-01-01</li>
+    <li><strong>Name:</strong> Mock TV Show</li>
+    <li><strong>Vote Average:</strong> 9.2</li>
+    <li><strong>Vote Count:</strong> 1500</li>
+  </ul>
+} @else {
+  <p>No se ha encontrado la serie</p>
+}
