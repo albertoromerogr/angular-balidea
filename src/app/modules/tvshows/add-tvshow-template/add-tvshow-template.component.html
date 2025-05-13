@@ -1,0 +1,71 @@
+<form #tvForm="ngForm" (ngSubmit)="onSubmit(tvForm)">
+  <label>Name</label>
+  <input
+    name="name"
+    minlength="2"
+    required
+    [(ngModel)]="tvShow.name"
+    #name="ngModel"
+  />
+  <div class="error">
+    <small *ngIf="name.errors?.['required']">Este campo es obligatorio</small>
+    <small *ngIf="name.errors?.['minlength']"
+      >El campo debe tener al menos
+      {{ name.errors?.['minlength'].requiredLength }} caracteres</small
+    >
+  </div>
+  <label>Descripcion</label>
+  <textarea name="description" [(ngModel)]="tvShow.overview"></textarea>
+  <label>Fecha de Estreno</label>
+  <input
+    type="date"
+    name="first_air_date"
+    [(ngModel)]="tvShow.first_air_date"
+    #date="ngModel"
+  />
+  <label>Idioma</label>
+  <input name="orignal_language" [(ngModel)]="tvShow.original_language" />
+  <label>Puntuación</label>
+  <input
+    type="number"
+    name="vote_average"
+    [(ngModel)]="tvShow.vote_average"
+    #rating="ngModel"
+  />
+  <label>Géneros</label>
+  <input name="genre_ids" [(ngModel)]="tvShow.genre_ids" />
+  <label>Póster</label>
+  <input
+    name="poster_path"
+    [(ngModel)]="tvShow.poster_path"
+    #poster="ngModel"
+  />
+  <label>Adulto</label>
+  <input type="checkbox" name="adult" [(ngModel)]="tvShow.adult" />
+
+  <div>
+    <button
+      type="button"
+      (click)="onSubmit(tvForm)"
+      [disabled]="tvForm.form.status !== 'VALID'"
+    >
+      Enviar
+    </button>
+    <!-- para trabajar con ngSubmit -->
+    <button type="submit" [disabled]="tvForm.form.status === 'INVALID'">
+      Submit
+    </button>
+    <button type="reset">Reset</button>
+    <button type="button" (click)="onReset()">Reset en component</button>
+  </div>
+
+  <div>
+    Estado del formulario (de Origen):
+    {{ tvForm.form.pristine ? 'De Origen' : 'Mofidicado' }}
+    <br />
+    Estado del formulario (validación:) {{ tvForm.form.status }}
+    <br />
+    Estado del formulario (modificado):
+    {{ tvForm.form.dirty ? 'Modificado' : 'No Modificado' }}
+  </div>
+</form>

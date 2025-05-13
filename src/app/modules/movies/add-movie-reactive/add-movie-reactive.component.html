@@ -1,0 +1,54 @@
+<form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+  <label>Título</label>
+  <input type="text" formControlName="title" />
+  <div class="error" *ngIf="movieForm.get('title')?.touched">
+    <small *ngIf="movieForm.get('title')?.errors?.['required']"
+      >El campo es obligatorio</small
+    >
+    @if (movieForm.get('title')?.errors?.['minlength']) {
+      <small>Debe tener al menos 2 caracters</small>
+    }
+  </div>
+  <label>Descripción</label>
+  <textarea formControlName="overview"></textarea>
+  <div class="error">
+    <small *ngIf="movieForm.get('overview')?.errors?.['spoiler']"
+      >Contiene la palabra spoiler</small
+    >
+  </div>
+  <label>Fecha de estreno</label>
+  <input type="date" formControlName="release_date" />
+  <div class="error">
+    <small *ngIf="movieForm.get('release_date')?.errors">
+      Este campo tiene un error
+    </small>
+  </div>
+  <label>Idioma Original</label>
+  <input formControlName="original_language" />
+  <label>Puntuación</label>
+  <input type="number" formControlName="vote_average" />
+  <div class="error">
+    <small
+      *ngIf="
+        movieForm.get('vote_average')?.errors?.['min'] ||
+        movieForm.get('vote_average')?.errors?.['max']
+      "
+      >El campo debe estar comprendido entre 0 y 10</small
+    >
+  </div>
+  <label>Géneros</label>
+  <input formControlName="genre_ids" />
+  <label>Póster</label>
+  <input formControlName="poster_path" />
+  <label>Adultos</label>
+  <input type="checkbox" formControlName="adult" />
+
+  <div class="actions">
+    <button type="button" (click)="onSubmit()" [disabled]="movieForm.invalid">
+      Enviar
+    </button>
+    <button type="button" (click)="onReset()" [disabled]="movieForm.invalid">
+      Reset
+    </button>
+  </div>
+</form>
