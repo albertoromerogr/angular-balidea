@@ -1,8 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
+  ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { noSpoilersValidation } from '@shared/validations/spoiler.validation';
@@ -11,6 +13,8 @@ import { noSpoilersValidation } from '@shared/validations/spoiler.validation';
   selector: 'app-add-movie-reactive',
   templateUrl: './add-movie-reactive.component.html',
   styleUrl: './add-movie-reactive.component.scss',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
 })
 export class AddMovieReactiveComponent {
   movieForm!: FormGroup<{

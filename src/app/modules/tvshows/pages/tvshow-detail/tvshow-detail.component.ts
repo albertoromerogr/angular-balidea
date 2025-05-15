@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TVShow } from '@models/tvshow.model';
@@ -8,6 +9,8 @@ import { take } from 'rxjs';
   selector: 'app-tvshow-detail',
   templateUrl: './tvshow-detail.component.html',
   styleUrl: './tvshow-detail.component.scss',
+  standalone: true,
+  imports: [CommonModule],
 })
 export class TvshowDetailComponent implements OnInit {
   tvShow!: TVShow;
@@ -24,7 +27,6 @@ export class TvshowDetailComponent implements OnInit {
       this.tvShowService.getTvShowById(id).subscribe({
         next: (tvShow) => {
           this.tvShow = tvShow;
-          console.log(this.tvShow);
         },
         error: (err) => {
           console.error(err);

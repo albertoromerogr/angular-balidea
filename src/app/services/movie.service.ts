@@ -12,12 +12,7 @@ export class MovieService {
 
   getPopularMovies(language: string = 'es', page: number = 1): Observable<any> {
     const url = `${environment.apiUrl}/discover/movie?language=${language}&page=${page}&sort_by=popularity.desc`;
-    return this.http.get(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${environment.apiKey}`,
-      },
-    });
+    return this.http.get(url);
   }
 
   getMoviesByString(query: string): Observable<any> {
