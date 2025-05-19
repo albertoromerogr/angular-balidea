@@ -1,0 +1,12 @@
+<h1>Demostración de ciclo de vida de un componente (LyfeCycle Hooks)</h1>
+
+<div class="controls">
+  <button role="button" (click)="toggleComponent()">Component</button>
+  <button role="button" (click)="updateInput()">Cambiar Input</button>
+</div>
+
+<div *ngIf="showComponent">
+  <app-lifecycle-demo [inputValue]="inputText">
+    <div content>Contenido Proyectado: {{ projectedContent }}</div>
+  </app-lifecycle-demo>
+</div>

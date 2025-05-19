@@ -1,5 +1,24 @@
 <app-header></app-header>
-<app-search></app-search>
+<!--app-search></!--app-search-->
+<h1>{{ 'WELCOME' | translate: { name } }} {{ 'NAME' | translate }}</h1>
+<div class="my-4">
+  <label class="mr-2 font-semibold"> Idioma:</label>
+  <select [(ngModel)]="selectedLang" (ngModelChange)="onLangChange($event)">
+    <option value="es">🇪🇸 Español</option>
+    <option value="en">🇬🇧 English</option>
+  </select>
+</div>
+<br />
+<div class="bg-white text-black dark:bg-gray-900 dark:text-white p-4">
+  <h1 class="text-xl font-bold">Esto lo vamos a estilar con tailwindCSS</h1>
+</div>
+<button
+  (click)="toggleDarkMode()"
+  class="bg-gray-200 dark:bg-blue-800 dark:text-white text-sm p-2"
+>
+  Dark mode
+</button>
+<br />
 <router-outlet></router-outlet>
 
 <app-footer></app-footer>

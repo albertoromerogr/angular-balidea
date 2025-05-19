@@ -1,19 +1,30 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Movie } from '@models/movie.model';
+import { CommonModule } from '@angular/common';
+import {
+  Component,
+  inject,
+  OnDestroy,
+  OnInit,
+  runInInjectionContext,
+} from '@angular/core';
 import { TVShow, TvShowResponse } from '@models/tvshow.model';
+import { MovieService } from '@services/movie.service';
 import { TvshowService } from '@services/tvshow.service';
+import { MediaCardComponent } from '@shared/media-card/media-card.component';
 import { map, Subject, Subscription, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-tvshow-list',
   templateUrl: './tvshow-list.component.html',
   styleUrl: './tvshow-list.component.scss',
+  standalone: true,
+  imports: [CommonModule, MediaCardComponent],
 })
 export class TvshowListComponent implements OnInit, OnDestroy {
   suscription!: Subscription;
   tvshows!: TVShow[];
   //destroy$: Subject<void> = new Subject<void>();
-
-  constructor(private service: TvshowService) {}
+  service: TvshowService = inject(TvshowService);
 
   ngOnInit(): void {
     this.loadTvShows();

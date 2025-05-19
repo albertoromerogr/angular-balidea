@@ -1,12 +1,14 @@
-import { formatDate } from '@angular/common';
+import { CommonModule, formatDate } from '@angular/common';
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { TVShow } from '@models/tvshow.model';
 
 @Component({
   selector: 'app-add-tvshow-template',
   templateUrl: './add-tvshow-template.component.html',
   styleUrl: './add-tvshow-template.component.scss',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
 })
 export class AddTvshowTemplateComponent {
   submitted: boolean = false;

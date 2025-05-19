@@ -1,3 +1,4 @@
+/* NO NECESARIO CON STANDALONE
 import { NgModule } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -8,6 +9,7 @@ import { RatingPipe } from './pipes/rating.pipe';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
+import { LifecyclePageComponent } from './lifecycle-page/lifecycle-page.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     SearchComponent,
     RatingPipe,
     TruncatePipe,
+    LifecyclePageComponent,
   ], // Que creo
   imports: [CommonModule, RouterModule, FormsModule], // Que necesitan mis componentes creados
   exports: [
@@ -34,3 +37,4 @@ export class SharedModule {
     console.log('Shared module initialized');
   }
 }
+*/

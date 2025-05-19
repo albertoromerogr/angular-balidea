@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
-  styleUrl: './movie-detail.component.scss'
+  styleUrl: './movie-detail.component.scss',
+  standalone: true,
 })
-export class MovieDetailComponent {
-
-}
+export class MovieDetailComponent {}

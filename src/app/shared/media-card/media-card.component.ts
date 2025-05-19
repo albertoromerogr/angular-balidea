@@ -1,13 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, input, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { Movie } from '@models/movie.model';
 import { TVShow } from '@models/tvshow.model';
 import { HelperService } from '@services/helper.service';
+import { RatingPipe } from '@shared/pipes/rating.pipe';
+import { TruncatePipe } from '@shared/pipes/truncate.pipe';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-media-card',
   templateUrl: './media-card.component.html',
   styleUrl: './media-card.component.scss',
+  standalone: true,
+  imports: [CommonModule, RouterModule, RatingPipe, TruncatePipe],
 })
 export class MediaCardComponent implements OnInit {
   @Input() item!: Movie | TVShow;

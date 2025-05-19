@@ -12,15 +12,19 @@ export class MovieService {
 
   getPopularMovies(language: string = 'es', page: number = 1): Observable<any> {
     const url = `${environment.apiUrl}/discover/movie?language=${language}&page=${page}&sort_by=popularity.desc`;
-    return this.http.get(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${environment.apiKey}`,
-      },
-    });
+    return this.http.get(url);
   }
 
   getMoviesByString(query: string): Observable<any> {
     return of('');
+  }
+
+  getPosterUrl(path: string, size: string = 'w200'): Observable<string> {
+    if (!path) {
+      return of('https://picsum.photos/200/500');
+    }
+
+    //Simula petición
+    return of(`${environment.imageApiUrl}${size}${path}`);
   }
 }

@@ -1,0 +1,14 @@
+<div>
+  <h3>Ciclo de Vida (demo)</h3>
+  <p>
+    <strong>Input: {{ inputValue }}</strong>
+  </p>
+
+  <ng-content select="[content]"></ng-content>
+
+  <hr />
+  <h4>Logs del ciclo de vida:</h4>
+  <ul>
+    <li *ngFor="let log of logs">{{ log }}</li>
+  </ul>
+</div>
