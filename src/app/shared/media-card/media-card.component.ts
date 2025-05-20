@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, input, OnInit } from '@angular/core';
+import { Component, Input, input, OnInit, output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Movie } from '@models/movie.model';
 import { TVShow } from '@models/tvshow.model';
@@ -16,34 +16,52 @@ import { Observable } from 'rxjs';
   imports: [CommonModule, RouterModule, RatingPipe, TruncatePipe],
 })
 export class MediaCardComponent implements OnInit {
-  @Input() item!: Movie | TVShow;
-  @Input() type: 'movie' | 'tvshow' = 'movie';
+  //@Input() item!: Movie | TVShow;
+  //@Input() type: 'movie' | 'tvshow' = 'movie';
+
+  readonly item = input<Movie | TVShow>();
+  readonly type = input<'movie' | 'tvshow'>('movie');
+  readonly selected = output<{}>();
 
   constructor(private helper: HelperService) {}
 
   ngOnInit(): void {}
 
+  selectMovie() {
+    this.selected.emit('estoy emitiendo');
+  }
+
   get title(): string {
-    return this.type === 'movie' && 'title' in this.item
-      ? this.item.title
-      : 'name' in this.item
-        ? this.item.name
+    const item = this.item();
+    const type = this.type();
+    if (!item) {
+      return '';
+    }
+    return type === 'movie' && 'title' in item
+      ? item.title
+      : 'name' in item
+        ? item.name
         : '';
   }
 
   get vote(): number {
-    return this.item.vote_average;
+    const item = this.item();
+    return item ? item.vote_average : 0;
   }
 
   get poster(): Observable<string> {
-    return this.helper.getPosterUrl(this.item.poster_path);
+    const item = this.item();
+    return this.helper.getPosterUrl(item?.poster_path || '');
   }
 
   get id(): number {
-    return this.item.id;
+    const item = this.item();
+    return item ? item.id : 0;
   }
 
   get routeUrl(): string {
-    return this.type === 'movie' ? `/movies/${this.id}` : `/tvshows/${this.id}`;
+    const type = this.type();
+    const id = this.id;
+    return type === 'movie' ? `/movies/${this.id}` : `/tvshows/${this.id}`;
   }
 }

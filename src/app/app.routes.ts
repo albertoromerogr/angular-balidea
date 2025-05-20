@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { LifecyclePageComponent } from '@shared/lifecycle-page/lifecycle-page.component';
 
 export const routes: Routes = [
   {
@@ -64,6 +63,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./shared/lifecycle-page/lifecycle-page.component').then(
         (c) => c.LifecyclePageComponent,
+      ),
+  },
+  {
+    path: 'signals',
+    loadComponent: () =>
+      import('./components/signals/signals.component').then(
+        (s) => s.SignalsComponent,
       ),
   },
 ];

@@ -4,6 +4,7 @@ import {
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   DoCheck,
   Input,
@@ -34,7 +35,7 @@ export class LifecycleDemoComponent
   @Input() inputValue: string = '0';
   logs: string[] = [];
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
     console.log('Constructor demo');
   }
 
@@ -81,5 +82,11 @@ export class LifecycleDemoComponent
   log(msg: string) {
     const fullMsg = `[LifeCycle] ${msg}`;
     this.logs.push(fullMsg);
+  }
+
+  //Forzar ejecución de cambios
+  triggerChanges() {
+    this.cd.detectChanges();
+    this.log('Forzando ejecución de cambios');
   }
 }

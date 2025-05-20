@@ -1,16 +1,34 @@
 <div>
-  <h3>Tabla de Películas</h3>
-  <div class="media-flex-container">
-    <!-- Nuevo control flow -->
-    @for (movie of movies; track movie.id) {
-      <app-media-card [item]="movie" type="movie"> </app-media-card>
-    }
+  <div>
+    <h3>Películas</h3>
+    <div class="media-flex-container">
+      <!-- <app-media-card
+        *ngFor="let movie of movies$ | async"
+        [item]="movie"
+        [type]="'movie'"
+      >
+      </app-media-card>
 
-    <!-- Antiguo control flow -->
-    <app-media-card
-      *ngFor="let movie of movies$ | async"
-      [item]="movie"
-      [type]="'movie'"
-    ></app-media-card>
+    <div *ngIf="loading()">Cargando...</div>
+      <div *ngIf="error()">{{ error() }}</div>
+      <app-media-card
+        *ngFor="let movie of moviesSignal()"
+        [item]="movie"
+        [type]="'movie'"
+        (selected)="onMovieSelected(movie)"
+      >
+      </app-media-card>
+      -->
+      <div *ngIf="loading()">Cargando...</div>
+      <div *ngIf="error">{{ error }}</div>
+      <app-media-card
+        *ngFor="let movie of moviesInject()"
+        [item]="movie"
+        [type]="'movie'"
+        (selected)="onMovieSelected($event)"
+      >
+      </app-media-card>
+    </div>
+    <button (click)="changeLoading()">Force change</button>
   </div>
 </div>
