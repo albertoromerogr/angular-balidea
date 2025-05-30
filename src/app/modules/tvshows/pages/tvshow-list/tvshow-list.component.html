@@ -3,7 +3,10 @@
   <div>
     <thead></thead>
     <tbody>
-      <tr *ngFor="let tvshow of tvshows">
+      <!-- <tr *ngFor="let tvshow of tvshows">
+        <app-media-card [item]="tvshow" [type]="'tvshow'"></app-media-card>
+      </tr> -->
+      <tr *ngFor="let tvshow of tvshows$ | async">
         <app-media-card [item]="tvshow" [type]="'tvshow'"></app-media-card>
       </tr>
     </tbody>

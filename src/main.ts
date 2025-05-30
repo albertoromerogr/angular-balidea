@@ -24,9 +24,14 @@ import {
 } from '@angular/common/http';
 import { authInterceptorFn } from '@shared/interceptors/auth.interceptor';
 import { catchError, throwError } from 'rxjs';
-import { importProvidersFrom } from '@angular/core';
+import { importProvidersFrom, isDevMode } from '@angular/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { tvShowsReducer } from './app/store/tvshows/tvshows.reducers';
+import { TvShowEffects } from '@store/tvshows/tvshow.effects';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -58,5 +63,8 @@ bootstrapApplication(AppComponent, {
         },
       }),
     ),
+    provideStore({ tvShowsStore: tvShowsReducer }),
+    provideEffects([TvShowEffects]),
+    provideStoreDevtools({ maxAge: 50 }),
   ],
 });

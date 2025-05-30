@@ -92,6 +92,12 @@ export class MovieListComponent {
       console.log('effect de numero');
       console.log('Esta es mi signal', this.numero());
 
+      //Metodo tradicional
+      const moviesT = this.movieService.getPopularMoviesSignal().movies;
+      const loadingT = this.movieService.getPopularMoviesSignal().loading;
+      const errorT = this.movieService.getPopularMoviesSignal().error;
+
+      // Desestructurando
       const { movies, loading, error } =
         this.movieService.getPopularMoviesSignal();
 
