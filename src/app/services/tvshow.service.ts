@@ -35,4 +35,14 @@ export class TvshowService {
       this._tvShowById.set(data);
     });
   }
+
+  getTvShowById(id: string): Observable<any> {
+    const url = `${environment.apiUrl}/tv/${id}?language=es`;
+    return this.http.get<any>(url);
+  }
+
+  getPopularTvShows(): Observable<TvShowResponse> {
+    const url = `${environment.apiUrl}/tv/popular?language=es&page=1`;
+    return this.http.get<TvShowResponse>(url);
+  }
 }

@@ -14,7 +14,10 @@ import { MediaCardComponent } from '@shared/media-card/media-card.component';
 import { map, Subject, Subscription, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as TvReduxActions from '@store/tvshows/tvshow.actions';
-import { selectAllTvShows } from '@store/tvshows/tvshow.selectors';
+import {
+  selectAllTvShows,
+  selectLoading,
+} from '@store/tvshows/tvshow.selectors';
 @Component({
   selector: 'app-tvshow-list',
   templateUrl: './tvshow-list.component.html',
@@ -31,6 +34,7 @@ export class TvshowListComponent implements OnInit, OnDestroy {
 
   // Redux
   tvShows$ = this.store.select(selectAllTvShows);
+  loading$ = this.store.select(selectLoading);
 
   ngOnInit(): void {
     // Redux

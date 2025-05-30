@@ -25,10 +25,10 @@ export class TvshowDetailComponent implements OnInit {
     this.activeRoute.paramMap.pipe(take(1)).subscribe((params) => {
       const id = params.get('id') ?? '1';
       this.tvShowService.getTvShowById(id).subscribe({
-        next: (tvShow) => {
+        next: (tvShow: TVShow) => {
           this.tvShow = tvShow;
         },
-        error: (err) => {
+        error: (err: any) => {
           console.error(err);
           this.router.navigate(['/tvshows']);
         },
