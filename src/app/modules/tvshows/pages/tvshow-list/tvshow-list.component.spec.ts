@@ -8,10 +8,9 @@ describe('TvshowListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TvshowListComponent]
-    })
-    .compileComponents();
-    
+      declarations: [TvshowListComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(TvshowListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

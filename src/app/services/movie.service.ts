@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../environments/environment.desa';
 import { Movie, MovieResponse } from '@models/movie.model';
+import { TVShow } from '@models/tvshow.model';
 
 @Injectable({
   providedIn: 'root',

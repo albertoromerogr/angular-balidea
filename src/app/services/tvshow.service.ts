@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { TvShowResponse } from '@models/tvshow.model';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment.desa';
+import { signal, computed } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -10,16 +11,28 @@ import { environment } from 'src/environments/environment.desa';
 export class TvshowService {
   http: HttpClient = inject(HttpClient);
 
-  getPopularTvShows(
-    language: string = 'es',
-    page: number = 1,
-  ): Observable<TvShowResponse> {
-    const url = `${environment.apiUrl}/tv/popular?language=${language}&page=${page}`;
-    return this.http.get<TvShowResponse>(url);
+  private _popularTvShows = signal<TvShowResponse | null>(null);
+  private _tvShowById = signal<any | null>(null);
+
+  get popularTvShows() {
+    return this._popularTvShows.asReadonly();
   }
 
-  getTvShowById(id: string, language: string = 'es'): Observable<any> {
+  get tvShowById() {
+    return this._tvShowById.asReadonly();
+  }
+
+  fetchPopularTvShows(language: string = 'es', page: number = 1): void {
+    const url = `${environment.apiUrl}/tv/popular?language=${language}&page=${page}`;
+    this.http.get<TvShowResponse>(url).subscribe((data) => {
+      this._popularTvShows.set(data);
+    });
+  }
+
+  fetchTvShowById(id: string, language: string = 'es'): void {
     const url = `${environment.apiUrl}/tv/${id}?language=${language}`;
-    return this.http.get<any>(url);
+    this.http.get<any>(url).subscribe((data) => {
+      this._tvShowById.set(data);
+    });
   }
 }
