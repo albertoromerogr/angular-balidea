@@ -1,0 +1,10 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+if [ "$2" != "merge" ] && [ -z "$3" ]; then
+  BRANCH_NAME=$(git symbolic-ref --short HEAD)
+  if echo "$BRANCH_NAME" | grep -qE '[A-Z]+-[0-9]+'; then
+    TICKET=$(echo "$BRANCH_NAME" | grep -oE '[A-Z]+-[0-9]+')
+    echo "[$TICKET] $(cat "$1")" > "$1"
+  fi
+fi

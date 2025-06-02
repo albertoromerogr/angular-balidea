@@ -4,6 +4,7 @@ import {
   AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   DoCheck,
@@ -19,6 +20,7 @@ import {
   templateUrl: './lifecycle-demo.component.html',
   styleUrl: './lifecycle-demo.component.scss',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
 })
 export class LifecycleDemoComponent

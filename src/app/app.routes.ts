@@ -29,6 +29,7 @@ export const routes: Routes = [
           import('./modules/movies/movie-detail/movie-detail.component').then(
             (c) => c.MovieDetailComponent,
           ),
+        data: { preload: true },
       },
     ],
   },

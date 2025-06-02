@@ -1,6 +1,7 @@
 import { MoviesFacade } from './../../../patterns/movies.facade';
 import { CommonModule } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   effect,
@@ -12,13 +13,15 @@ import { Movie, MovieResponse } from '@models/movie.model';
 import { MovieService } from '@services/movie.service';
 import { MediaCardComponent } from '@shared/media-card/media-card.component';
 import { map, Observable, of, take } from 'rxjs';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.scss',
   standalone: true,
-  imports: [CommonModule, MediaCardComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule, MediaCardComponent, ScrollingModule],
 })
 export class MovieListComponent {
   /*
@@ -130,5 +133,9 @@ export class MovieListComponent {
 
   changeLoading() {
     this.numero.set(24);
+  }
+
+  trackById(index: number, movie: Movie): number {
+    return movie.id;
   }
 }
