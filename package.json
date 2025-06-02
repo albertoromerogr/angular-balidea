@@ -10,7 +10,8 @@
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "prettier": "npm run prettier:check && npm run prettier:write",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint-staged": "npx lint-staged"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.16",
+    "@angular-eslint/schematics": "^19.7.0",
     "@angular/cli": "^17.3.16",
     "@angular/compiler-cli": "^17.3.0",
     "@commitlint/cli": "19.8.1",
@@ -52,6 +54,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "lint-staged": "16.1.0",
     "prettier": "^3.5.3",
     "typescript": "~5.4.2"
   }
