@@ -2,7 +2,3 @@
 #npm run build
 npm run lint-staged
 
-if [ ${#MSG} -lt 5 ]; then
-  echo "Commit rechazado: el mensaje debe tener al menos 5 caracteres."
-  exit 1
-fi
