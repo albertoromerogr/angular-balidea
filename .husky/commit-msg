@@ -1,7 +1,7 @@
 npx --no-install commitlint --edit $1
 MSG=$(cat "$1")
 
-if [ ${#MSG} -lt 5 ]; then
-  echo "❌ Commit rechazado: el mensaje debe tener al menos 5 caracteres."
+if [ ${#MSG} -lt 15 ]; then
+  echo "✖ el mensaje debe tener al menos 15 caracteres."
   exit 1
 fi
