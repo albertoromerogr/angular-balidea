@@ -1,7 +1,3 @@
 #!/bin/sh
-
-# Solo si no es un merge y no se pasa un mensaje explícito
-if [ "$2" != "merge" ] && [ -z "$3" ]; then
-  BRANCH_NAME=$(git symbolic-ref --short HEAD)
-  echo "$(cat "$1")" > "$1 - [$BRANCH_NAME] "
-fi
+BRANCH_NAME=$(git symbolic-ref --short HEAD)
+echo "$(cat "$1")" > "$1 - [$BRANCH_NAME] "
