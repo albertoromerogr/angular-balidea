@@ -25,6 +25,16 @@ export const tvShowsReducer = createReducer(
     ...state,
     tvshow,
   })),
+  on(TVShowsActions.resetLoading, (state) => ({
+    ...state,
+    loading: false,
+  })),
+  on(TVShowsActions.saveAsFavourite, (state, { id }) => ({
+    ...state,
+    tvshows: state.tvshows.map((tvshow) =>
+      tvshow.id === id ? { ...tvshow, isFavourite: true } : tvshow,
+    ),
+  })),
 );
 
 /*

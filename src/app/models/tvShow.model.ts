@@ -20,4 +20,5 @@ export interface TVShow {
   name: string;
   vote_average: number;
   vote_count: number;
+  isFavourite?: boolean;
 }

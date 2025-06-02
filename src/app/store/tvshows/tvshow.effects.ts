@@ -26,4 +26,21 @@ export class TvShowEffects {
       ),
     ),
   );
+
+  //@TODO crear funcion para hacer el patch
+  // saveAsFavourite$ = createEffect(() => {
+  //   this.actions$.pipe(
+  //     ofType(TvShowsActions.saveAsFavourite),
+  //     mergeMap((id: number) => {
+  //       this.service.markAsFavourite(id).pipe(
+  //         map(() => {
+  //           TvShowsActions.loadTvShows();
+  //         }),
+  //         catchError((err) =>
+  //           of(TvShowsActions.loadTvShowsError({ error: err })),
+  //         ),
+  //       );
+  //     }),
+  //   );
+  // });
 }

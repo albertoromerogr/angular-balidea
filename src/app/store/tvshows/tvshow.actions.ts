@@ -18,3 +18,10 @@ export const saveTvshowDetail = createAction(
   '[TV Shows] Save TV Show',
   props<{ tvshow: TVShow }>(),
 );
+
+export const resetLoading = createAction('[TV Shows] Reset Loading');
+
+export const saveAsFavourite = createAction(
+  '[TV Shows] Save TV Show',
+  props<{ id: number }>(),
+);
