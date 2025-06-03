@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TVShow } from '@models/tvshow.model';
-import { TvshowService } from '@services/tvshow.service';
+import { TvshowService } from '../../../../services/tvshow.service';
 import { take } from 'rxjs';
 
 @Component({

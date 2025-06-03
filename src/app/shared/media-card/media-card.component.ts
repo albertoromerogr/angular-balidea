@@ -3,9 +3,9 @@ import { Component, Input, input, OnInit, output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Movie } from '@models/movie.model';
 import { TVShow } from '@models/tvshow.model';
-import { HelperService } from '@services/helper.service';
-import { RatingPipe } from '@shared/pipes/rating.pipe';
-import { TruncatePipe } from '@shared/pipes/truncate.pipe';
+import { HelperService } from '../../services/helper.service';
+import { RatingPipe } from '../../shared/pipes/rating.pipe';
+import { TruncatePipe } from '../../shared/pipes/truncate.pipe';
 import { Observable } from 'rxjs';
 
 @Component({

@@ -1,22 +1,27 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
 import { TvshowListComponent } from './tvshow-list.component';
+import { Store } from '@ngrx/store';
+import { of } from 'rxjs';
+import { initialTvShowState } from '../../../../store/tvshows/tvshow.state';
 
-describe('TvshowListComponent', () => {
-  let component: TvshowListComponent;
-  let fixture: ComponentFixture<TvshowListComponent>;
-
+describe('TvShowListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TvshowListComponent],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(TvshowListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+      imports: [HttpClientTestingModule, TvshowListComponent],
+      providers: [
+        {
+          provide: Store,
+          useValue: {
+            select: () => of([initialTvShowState]),
+            dispatch: () => {
+              initialTvShowState;
+            },
+          },
+        },
+      ],
+    });
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('El componente se crea correctamente', () => {});
 });

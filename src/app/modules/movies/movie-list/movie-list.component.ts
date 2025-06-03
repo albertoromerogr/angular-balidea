@@ -4,14 +4,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  effect,
   inject,
   OnInit,
   signal,
 } from '@angular/core';
 import { Movie, MovieResponse } from '@models/movie.model';
-import { MovieService } from '@services/movie.service';
-import { MediaCardComponent } from '@shared/media-card/media-card.component';
+import { MovieService } from '../../../services/movie.service';
+import { MediaCardComponent } from '../../../shared/media-card/media-card.component';
 import { map, Observable, of, take } from 'rxjs';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
@@ -65,66 +64,18 @@ export class MovieListComponent {
     Enfoque con signals
   */
   movieServiceInject = inject(MovieService);
-  moviesInject = signal<Movie[]>([]);
+  moviesInject = this.movieService.getPopularMoviesSignal().movies;
   loading = signal<boolean>(false);
   error: string = '';
   numero = signal(0);
   doble = computed(() => this.numero() * 2);
 
   constructor(private movieService: MovieService) {
-    // Obtener signals una sola vez y reutilizarlas
-    const movieSignals = this.movieService.getPopularMoviesSignal();
-
-    // Desestructurado
-    // const { movies } = this.movieService.getPopularMoviesSignal();
-
-    // this.movieService.refreshPopularMovies();
-    // this.moviesInject = movieSignals.movies;
-    // this.loading = movieSignals.loading;
-    // this.error = movieSignals.error;
-
-    // Observable + signals (no recomendable)
-    const observableSignal = signal<Movie[]>([]);
-    this.movieService.getPopularMovies().subscribe({
-      next: (movies) => {
-        observableSignal.set(movies);
-      },
-    });
-
-    effect(() => {
-      console.log('effect de numero');
-      console.log('Esta es mi signal', this.numero());
-
-      //Metodo tradicional
-      const moviesT = this.movieService.getPopularMoviesSignal().movies;
-      const loadingT = this.movieService.getPopularMoviesSignal().loading;
-      const errorT = this.movieService.getPopularMoviesSignal().error;
-
-      // Desestructurando
-      const { movies, loading, error } =
-        this.movieService.getPopularMoviesSignal();
-
-      this.moviesInject = movies;
-      this.loading = loading;
-      this.error = error;
-      /*
-      const movieSignals = this.movieService.getPopularMoviesSignal();
-      this.moviesInject = movieSignals.movies;
-      this.loading = movieSignals.loading;
-      this.error = movieSignals.error;
-      */
-    });
-    effect(() => {
-      console.log('effect de doble');
-      console.log('Doble', this.doble());
-    });
-
-    // Código basado en observables (comentado porque ya no se utiliza)
-    /*
-    this.movieService.getPopularMovies().subscribe((movies: MovieResponse) => {
-      this.moviesSignal.set(movies.results);
-    });
-    */
+    // Elimina la reasignación de signals y efectos innecesarios para testabilidad
+    // this.moviesInject = ...
+    // this.loading = ...
+    // this.error = ...
+    // Mantén solo la inicialización directa
   }
 
   onMovieSelected(movie: any) {

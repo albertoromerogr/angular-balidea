@@ -68,4 +68,9 @@ export class MovieService {
   refreshPopularMovies() {
     this.fetchPopularMovies();
   }
+
+  // Solo para testing: permite setear las películas mockeadas
+  setMoviesMock(movies: Movie[]) {
+    this.movies.set(movies);
+  }
 }

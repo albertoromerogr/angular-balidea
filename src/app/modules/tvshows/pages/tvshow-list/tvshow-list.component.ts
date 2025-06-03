@@ -9,15 +9,15 @@ import {
 } from '@angular/core';
 import { TVShow, TvShowResponse } from '@models/tvshow.model';
 import { MovieService } from '@services/movie.service';
-import { TvshowService } from '@services/tvshow.service';
-import { MediaCardComponent } from '@shared/media-card/media-card.component';
+import { TvshowService } from '../../../../services/tvshow.service';
+import { MediaCardComponent } from '../../../../shared/media-card/media-card.component';
 import { map, Subject, Subscription, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
-import * as TvReduxActions from '@store/tvshows/tvshow.actions';
+import * as TvReduxActions from '../../../../store/tvshows/tvshow.actions';
 import {
   selectAllTvShows,
   selectLoading,
-} from '@store/tvshows/tvshow.selectors';
+} from '../../../../store/tvshows/tvshow.selectors';
 @Component({
   selector: 'app-tvshow-list',
   templateUrl: './tvshow-list.component.html',

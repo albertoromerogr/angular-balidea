@@ -32,16 +32,22 @@
       </app-media-card>
 
       <!--Con virtual scroll-->
-      <cdk-virtual-scroll-viewport>
+      <cdk-virtual-scroll-viewport itemSize="200" class="viewport">
         <app-media-card
           *cdkVirtualFor="let movie of moviesInject(); trackById"
           [item]="movie"
           [type]="'movie'"
           (selected)="onMovieSelected($event)"
         >
-        </app-media-card> </cdk-virtual-scroll-viewport
-      >cdk-virtual-scroll-viewport>
+        </app-media-card>
+      </cdk-virtual-scroll-viewport>
     </div>
-    <button (click)="changeLoading()">Force change</button>
+    <button
+      id="force-change-btn"
+      data-testid="force-change-btn"
+      (click)="changeLoading()"
+    >
+      Force change
+    </button>
   </div>
 </div>
